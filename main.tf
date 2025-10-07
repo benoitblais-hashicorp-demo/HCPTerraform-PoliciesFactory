@@ -1,6 +1,4 @@
-# -----------------------------------------------------------------------------
 # The following code block is used to create Terraform Cloud Policies.
-# -----------------------------------------------------------------------------
 
 locals {
   # This local is used to get a list of all folder inside the policies folder.
@@ -23,9 +21,7 @@ resource "tfe_policy" "this" {
   enforce_mode = "advisory" # advisory, hard-mandatory and soft-mandatory
 }
 
-# -----------------------------------------------------------------------------
 # The following code block is used to create Terraform Cloud Policy Sets.
-# -----------------------------------------------------------------------------
 
 resource "tfe_policy_set" "global" {
   name         = "Global-Policy-Set"
