@@ -20,9 +20,13 @@ find_all_module_calls = func() {
 
 allModuleCalls = find_all_module_calls()
 
-#Get all module calls tht have version_constraint as undefined or empty.
+allRemoteCalls = filter allModuleCalls as address, mc {
+ mc.source not matches "^./" 
+}
+
+#Get all module calls that have version_constraint as undefined or empty.
 #think it as : (mc.version_constrain else "") is ""
-violatingModuleCalls = filter allModuleCalls as address, mc {
+violatingModuleCalls = filter allRemoteCalls as address, mc {
 	mc.version_constraint else "" is ""
 }
 
