@@ -43,14 +43,19 @@ jobs:
       CONFIG_DIRECTORY: "./"
     steps:
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
+      - name: Print GitHub context
         run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
 
       - name: Branch
         id: branch
-        run: echo "branch=${GITHUB_HEAD_REF}" >> "$GITHUB_OUTPUT"
+        run: |
+          PULL_URL=${{ github.event.issue.pull_request.url }}
+          Accept_Header="Accept: application/vnd.github.v3+json"
+          Auth_Header="Authorization: token $GITHUB_TOKEN"
+          Branch=$(curl -sS -H "$Auth_Header" -H "$Accept_Header" -L $PULL_URL | jq -r ' .head.ref' )
+          echo "Branch=${Branch}" >> $GITHUB_OUTPUT
       
       - name: Checkout
         uses: actions/checkout@v5
