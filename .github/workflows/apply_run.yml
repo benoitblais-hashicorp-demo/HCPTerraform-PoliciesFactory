@@ -43,6 +43,11 @@ jobs:
       CONFIG_DIRECTORY: "./"
     steps:
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
       - name: Branch
         id: branch
         run: echo "branch=${GITHUB_HEAD_REF}" >> "$GITHUB_OUTPUT"
