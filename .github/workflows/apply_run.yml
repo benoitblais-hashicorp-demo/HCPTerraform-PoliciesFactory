@@ -37,7 +37,7 @@ jobs:
     if: contains(github.event.comment.body, 'terraform apply')  
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      TF_CLOUD_ORGANIZATION: "ConseilsTI"
+      TF_CLOUD_ORGANIZATION: "benoitblais-hashicorp"
       TF_API_TOKEN: ${{ secrets.TFE_TOKEN }}
       TF_WORKSPACE: ${{ github.event.repository.name }}
       CONFIG_DIRECTORY: "./"
