@@ -17,9 +17,9 @@ find_all_module_calls = func() {
 }
 
 # Get all modules
-
 allModuleCalls = find_all_module_calls()
 
+#Get all module calls that are not local.
 allRemoteCalls = filter allModuleCalls as address, mc {
 	mc.source not matches "^./"
 }
