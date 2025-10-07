@@ -21,10 +21,10 @@ param organizations
 # Find modules called from root module that are not in the desired PMR
 violatingMCs = filter tfconfig.module_calls as index, mc {
 	mc.source not matches "^./" and
-    mc.module_address is "" and
-      not any organizations as organization {
-        strings.has_prefix(mc.source, address + "/" + organization)
-      }
+		mc.module_address is "" and
+		not any organizations as organization {
+			strings.has_prefix(mc.source, address + "/" + organization)
+		}
 }
 
 # Print violation messages for invalid modules
