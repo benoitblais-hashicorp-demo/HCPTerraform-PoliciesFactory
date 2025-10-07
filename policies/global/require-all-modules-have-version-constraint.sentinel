@@ -21,7 +21,7 @@ find_all_module_calls = func() {
 allModuleCalls = find_all_module_calls()
 
 allRemoteCalls = filter allModuleCalls as address, mc {
- mc.source not matches "^./" 
+	mc.source not matches "^./"
 }
 
 #Get all module calls that have version_constraint as undefined or empty.
