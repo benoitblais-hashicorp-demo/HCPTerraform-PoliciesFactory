@@ -23,7 +23,7 @@
 name: HCP Terraform Apply Run
 
 on:  # yamllint disable-line rule:truthy
-  issue_comment:                                     
+  issue_comment:
     types: [created]
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
   hcp-terraform-apply-run:
     name: HCP Terraform Apply Run
     runs-on: ubuntu-latest
-    if: contains(github.event.comment.body, 'terraform apply')  
+    if: contains(github.event.comment.body, 'terraform apply')
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TF_CLOUD_ORGANIZATION: "benoitblais-hashicorp"
@@ -46,7 +46,7 @@ jobs:
       - name: Branch
         id: branch
         run: echo "branch=${GITHUB_HEAD_REF}" >> "$GITHUB_OUTPUT"
-      
+
       - name: Checkout
         uses: actions/checkout@v5
         with:
