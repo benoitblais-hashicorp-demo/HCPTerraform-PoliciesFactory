@@ -75,6 +75,22 @@ Type: `string`
 
 The following input variables are optional (have default values):
 
+### <a name="input_aws_cis_git_repository_identifier"></a> [aws\_cis\_git\_repository\_identifier](#input\_aws\_cis\_git\_repository\_identifier)
+
+Description: The VCS repository identifier for the CIS Policy Set. `oauth_client_name` must also be set.
+
+Type: `string`
+
+Default: `"benoitblais-hashicorp/HCPTerraform-CIS-Policy-Set-for-AWS-Terraform"`
+
+### <a name="input_oauth_client_name"></a> [oauth\_client\_name](#input\_oauth\_client\_name)
+
+Description: (Optional) Name of the OAuth client.
+
+Type: `string`
+
+Default: `"GitHub"`
+
 ### <a name="input_policies_folder"></a> [policies\_folder](#input\_policies\_folder)
 
 Description: The name of the folder where policies are located.
@@ -88,7 +104,9 @@ Default: `"./policies"`
 The following resources are used by this module:
 
 - [tfe_policy.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy) (resource)
+- [tfe_policy_set.cis-aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
 - [tfe_policy_set.global](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
+- [tfe_oauth_client.client](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/oauth_client) (data source)
 
 ## Outputs
 
