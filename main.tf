@@ -31,3 +31,34 @@ resource "tfe_policy_set" "global" {
   kind         = "sentinel"
   policy_ids   = [for value in tfe_policy.this : value.id]
 }
+
+# The following block is use to get information about an OAuth client.
+
+data "tfe_oauth_client" "client" {
+  count        = var.oauth_client_name != null ? 1 : 0
+  organization = var.organization_name
+  name         = var.oauth_client_name
+}
+
+# The following block is used to create a Policy Set from a VCS repository for AWS CIS.
+
+resource "tfe_policy_set" "cis-aws" {
+  count               = var.aws_cis_git_repository_identifier != null ? 1 : 0
+  name                = "AWS-CIS-Policy-Set"
+  description         = "This policy-set is assigned at the organization level."
+  organization        = var.organization_name
+  global              = true
+  kind                = "sentinel"
+  vcs_repo {
+    identifier         = var.aws_cis_git_repository_identifier
+    branch             = "main"
+    ingress_submodules = false
+    oauth_token_id     = data.tfe_oauth_client.client[0].oauth_token_id
+  }
+  lifecycle {
+    precondition {
+      condition = var.oauth_client_name != null ? true : false
+      error_message = "`oauth_client_name` must be set when `aws_cis_git_repository_identifier` is set."
+    }
+  }
+}
