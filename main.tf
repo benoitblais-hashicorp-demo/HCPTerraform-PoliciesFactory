@@ -18,7 +18,7 @@ resource "tfe_policy" "this" {
   organization = var.organization_name
   kind         = "sentinel"
   policy       = file("${var.policies_folder}/${each.key}")
-  enforce_mode = "advisory" # advisory, hard-mandatory and soft-mandatory
+  enforce_mode = "hard-mandatory" # advisory, hard-mandatory and soft-mandatory
 }
 
 # The following code block is used to create Terraform Cloud Policy Sets.
