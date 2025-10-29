@@ -22,7 +22,7 @@ param organization default "benoitblais-hashicorp"
 violatingMCs = filter tfconfig.module_calls as index, mc {
 	mc.source not matches "^./" and
 		mc.module_address is "" and
-		  not strings.has_prefix(mc.source, address + "/" + organization)
+		not strings.has_prefix(mc.source, address + "/" + organization)
 }
 
 # Print violation messages for invalid modules
