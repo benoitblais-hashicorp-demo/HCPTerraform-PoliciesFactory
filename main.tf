@@ -18,7 +18,7 @@ resource "tfe_policy" "this" {
   organization = var.organization_name
   kind         = "sentinel"
   policy       = file("${var.policies_folder}/${each.key}")
-  enforce_mode = "advisory" # advisory, hard-mandatory and soft-mandatory
+  enforce_mode = "hard-mandatory" # advisory, hard-mandatory and soft-mandatory
 }
 
 # The following code block is used to create Terraform Cloud Policy Sets.
@@ -42,7 +42,7 @@ data "tfe_oauth_client" "client" {
 
 # The following block is used to create a Policy Set from a VCS repository for AWS CIS.
 
-resource "tfe_policy_set" "cis-aws" {
+resource "tfe_policy_set" "cis_aws" {
   count        = var.aws_cis_git_repository_identifier != null ? 1 : 0
   name         = "AWS-CIS-Policy-Set"
   description  = "This policy-set is assigned at the organization level."

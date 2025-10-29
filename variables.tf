@@ -6,7 +6,7 @@ variable "organization_name" {
 variable "aws_cis_git_repository_identifier" {
   description = "The VCS repository identifier for the CIS Policy Set. `oauth_client_name` must also be set."
   type        = string
-  default     = "benoitblais-hashicorp/HCPTerraform-CIS-Policy-Set-for-AWS-Terraform"
+  default     = "benoitblais-hashicorp-demo/HCPTerraform-CIS-Policy-Set-for-AWS-Terraform"
 }
 
 variable "oauth_client_name" {
