@@ -6,8 +6,8 @@ workspace that would provision and manage the policies using Terraform code (IaC
 
 ## Permissions
 
-To manage the agent pool resources, provide a user token from an account with
-appropriate permissions. This user should have the `Manage policies` permission.
+To manage resources, provide a user token from an account with appropriate
+permissions. This user should have the `Manage policies` permission.
 Alternatively, you can use a token from a team instead of a user token.
 
 ## Authentication
