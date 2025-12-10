@@ -7,8 +7,8 @@ workspace that would provision and manage the policies using Terraform code (IaC
 
 ## Permissions
 
-To manage the agent pool resources, provide a user token from an account with
-appropriate permissions. This user should have the `Manage policies` permission.
+To manage resources, provide a user token from an account with appropriate
+permissions. This user should have the `Manage policies` permission.
 Alternatively, you can use a token from a team instead of a user token.
 
 ## Authentication
@@ -81,7 +81,7 @@ Description: The VCS repository identifier for the CIS Policy Set. `oauth_client
 
 Type: `string`
 
-Default: `"benoitblais-hashicorp/HCPTerraform-CIS-Policy-Set-for-AWS-Terraform"`
+Default: `"benoitblais-hashicorp-demo/HCPTerraform-CIS-Policy-Set-for-AWS-Terraform"`
 
 ### <a name="input_oauth_client_name"></a> [oauth\_client\_name](#input\_oauth\_client\_name)
 
@@ -104,7 +104,7 @@ Default: `"./policies"`
 The following resources are used by this module:
 
 - [tfe_policy.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy) (resource)
-- [tfe_policy_set.cis-aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
+- [tfe_policy_set.cis_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
 - [tfe_policy_set.global](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
 - [tfe_oauth_client.client](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/oauth_client) (data source)
 
