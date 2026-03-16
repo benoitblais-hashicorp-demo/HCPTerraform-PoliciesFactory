@@ -24,7 +24,7 @@ allProviders = find_all_providers()
 #Exclude the "terraform" provider from this requirement
 violatingProviders = filter allProviders as address, mc {
 	mc.version_constraint else "" is "" and
-	mc.name is not "terraform"
+		mc.name is not "terraform"
 }
 
 # Print any violations
