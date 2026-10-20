@@ -49,7 +49,7 @@ The following requirements are needed by this module:
 
 - <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (>= 1.13.0)
 
-- <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (~>0.70)
+- <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (~>0.82)
 
 ## Modules
 
@@ -83,6 +83,30 @@ Type: `string`
 
 Default: `"benoitblais-hashicorp-demo/HCPTerraform-CIS-Policy-Set-for-AWS-Terraform"`
 
+### <a name="input_aws_fsbp_git_repository_identifier"></a> [aws\_fsbp\_git\_repository\_identifier](#input\_aws\_fsbp\_git\_repository\_identifier)
+
+Description: The VCS repository identifier for the FSBP Policy Set. `oauth_client_name` must also be set.
+
+Type: `string`
+
+Default: `"benoitblais-hashicorp-demo/HCPTerraform-FSBP-Policy-Set-for-AWS-Terraform"`
+
+### <a name="input_aws_nist_git_repository_identifier"></a> [aws\_nist\_git\_repository\_identifier](#input\_aws\_nist\_git\_repository\_identifier)
+
+Description: The VCS repository identifier for the NIST Policy Set. `oauth_client_name` must also be set.
+
+Type: `string`
+
+Default: `"benoitblais-hashicorp-demo/HCPTerraform-NIST-Policy-Set-for-AWS-Terraform"`
+
+### <a name="input_aws_pcidss_git_repository_identifier"></a> [aws\_pcidss\_git\_repository\_identifier](#input\_aws\_pcidss\_git\_repository\_identifier)
+
+Description: The VCS repository identifier for the PCI DSS Policy Set. `oauth_client_name` must also be set.
+
+Type: `string`
+
+Default: `"benoitblais-hashicorp-demo/HCPTerraform-PCIDSS-Policy-Set-for-AWS-Terraform"`
+
 ### <a name="input_oauth_client_name"></a> [oauth\_client\_name](#input\_oauth\_client\_name)
 
 Description: (Optional) Name of the OAuth client.
@@ -105,7 +129,14 @@ The following resources are used by this module:
 
 - [tfe_policy.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy) (resource)
 - [tfe_policy_set.cis_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
+- [tfe_policy_set.fsbp_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
 - [tfe_policy_set.global](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
+- [tfe_policy_set.nist_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
+- [tfe_policy_set.pcidss_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
+- [tfe_tag_policy_set.cis_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/tag_policy_set) (resource)
+- [tfe_tag_policy_set.fsbp_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/tag_policy_set) (resource)
+- [tfe_tag_policy_set.nist_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/tag_policy_set) (resource)
+- [tfe_tag_policy_set.pcidss_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/tag_policy_set) (resource)
 - [tfe_oauth_client.client](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/oauth_client) (data source)
 
 ## Outputs
