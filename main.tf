@@ -45,15 +45,15 @@ data "tfe_oauth_client" "client" {
 
 locals {
   cis_aws_tags = {
-    CSP        = "AWS"
-    Compliance = "CIS"
+    csp        = "aws"
+    compliance = "cis"
   }
 }
 
 resource "tfe_policy_set" "cis_aws" {
   count           = var.aws_cis_git_repository_identifier != null ? 1 : 0
   name            = "AWS-CIS-Policy-Set"
-  description     = "CIS Benchmark for AWS policy-set, assigned to workspaces tagged with CSP = AWS and Compliance = CIS."
+  description     = "CIS Benchmark for AWS policy-set, assigned to workspaces tagged with csp = aws and compliance = cis."
   organization    = var.organization_name
   kind            = "sentinel"
   tag_match_logic = "all"
@@ -83,15 +83,15 @@ resource "tfe_tag_policy_set" "cis_aws" {
 
 locals {
   fsbp_aws_tags = {
-    CSP        = "AWS"
-    Compliance = "FSBP"
+    csp        = "aws"
+    compliance = "fsbp"
   }
 }
 
 resource "tfe_policy_set" "fsbp_aws" {
   count           = var.aws_fsbp_git_repository_identifier != null ? 1 : 0
   name            = "AWS-FSBP-Policy-Set"
-  description     = "AWS Foundational Security Best Practices policy-set, assigned to workspaces tagged with CSP = AWS and Compliance = FSBP."
+  description     = "AWS Foundational Security Best Practices policy-set, assigned to workspaces tagged with csp = aws and compliance = fsbp."
   organization    = var.organization_name
   kind            = "sentinel"
   tag_match_logic = "all"
@@ -121,15 +121,15 @@ resource "tfe_tag_policy_set" "fsbp_aws" {
 
 locals {
   pcidss_aws_tags = {
-    CSP        = "AWS"
-    Compliance = "PCIDSS"
+    csp        = "aws"
+    compliance = "pcidss"
   }
 }
 
 resource "tfe_policy_set" "pcidss_aws" {
   count           = var.aws_pcidss_git_repository_identifier != null ? 1 : 0
   name            = "AWS-PCIDSS-Policy-Set"
-  description     = "PCI DSS for AWS policy-set, assigned to workspaces tagged with CSP = AWS and Compliance = PCIDSS."
+  description     = "PCI DSS for AWS policy-set, assigned to workspaces tagged with csp = aws and compliance = pcidss."
   organization    = var.organization_name
   kind            = "sentinel"
   tag_match_logic = "all"
@@ -159,15 +159,15 @@ resource "tfe_tag_policy_set" "pcidss_aws" {
 
 locals {
   nist_aws_tags = {
-    CSP        = "AWS"
-    Compliance = "NIST"
+    csp        = "aws"
+    compliance = "nist"
   }
 }
 
 resource "tfe_policy_set" "nist_aws" {
   count           = var.aws_nist_git_repository_identifier != null ? 1 : 0
   name            = "AWS-NIST-Policy-Set"
-  description     = "NIST for AWS policy-set, assigned to workspaces tagged with CSP = AWS and Compliance = NIST."
+  description     = "NIST for AWS policy-set, assigned to workspaces tagged with csp = aws and compliance = nist."
   organization    = var.organization_name
   kind            = "sentinel"
   tag_match_logic = "all"
