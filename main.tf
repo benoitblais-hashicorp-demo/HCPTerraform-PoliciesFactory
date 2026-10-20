@@ -41,14 +41,22 @@ data "tfe_oauth_client" "client" {
 }
 
 # The following block is used to create a Policy Set from a VCS repository for AWS CIS.
+# It is applied only to workspaces that have ALL of the tags defined in `local.cis_aws_tags`.
+
+locals {
+  cis_aws_tags = {
+    CSP        = "AWS"
+    Compliance = "CIS"
+  }
+}
 
 resource "tfe_policy_set" "cis_aws" {
-  count        = var.aws_cis_git_repository_identifier != null ? 1 : 0
-  name         = "AWS-CIS-Policy-Set"
-  description  = "This policy-set is assigned at the organization level."
-  organization = var.organization_name
-  global       = true
-  kind         = "sentinel"
+  count           = var.aws_cis_git_repository_identifier != null ? 1 : 0
+  name            = "AWS-CIS-Policy-Set"
+  description     = "CIS Benchmark for AWS policy-set, assigned to workspaces tagged with CSP = AWS and Compliance = CIS."
+  organization    = var.organization_name
+  kind            = "sentinel"
+  tag_match_logic = "all"
   vcs_repo {
     identifier         = var.aws_cis_git_repository_identifier
     branch             = "main"
@@ -61,4 +69,11 @@ resource "tfe_policy_set" "cis_aws" {
       error_message = "`oauth_client_name` must be set when `aws_cis_git_repository_identifier` is set."
     }
   }
+}
+
+resource "tfe_tag_policy_set" "cis_aws" {
+  for_each      = var.aws_cis_git_repository_identifier != null ? local.cis_aws_tags : {}
+  policy_set_id = tfe_policy_set.cis_aws[0].id
+  key           = each.key
+  value         = each.value
 }

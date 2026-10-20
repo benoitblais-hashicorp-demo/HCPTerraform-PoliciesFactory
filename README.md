@@ -49,7 +49,7 @@ The following requirements are needed by this module:
 
 - <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (>= 1.13.0)
 
-- <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (~>0.70)
+- <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (~>0.82)
 
 ## Modules
 
@@ -106,6 +106,7 @@ The following resources are used by this module:
 - [tfe_policy.this](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy) (resource)
 - [tfe_policy_set.cis_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
 - [tfe_policy_set.global](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) (resource)
+- [tfe_tag_policy_set.cis_aws](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/tag_policy_set) (resource)
 - [tfe_oauth_client.client](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/oauth_client) (data source)
 
 ## Outputs
