@@ -28,6 +28,17 @@ to authenticate.
   - policies
   - policy sets
 
+## Policy Set Scoping
+
+The AWS compliance policy sets (CIS, FSBP, PCI DSS and NIST) are not global. Each one
+is assigned only to workspaces that carry **all** of its required key-value tags, for
+example `csp = aws` and `compliance = cis`.
+
+> **Note:** Tag keys and values are case sensitive and must be lowercase. They must also
+> already exist on at least one workspace in the organization before this code is applied,
+> otherwise HCP Terraform rejects the tag inclusion with the error
+> `No workspace tag found with key "..." and value "..." in this organization`.
+
 ## Test Folder Structure
 
 Sentinel is opinionated about the folder structure required for tests. This
