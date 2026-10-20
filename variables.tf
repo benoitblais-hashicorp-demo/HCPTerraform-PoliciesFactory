@@ -9,6 +9,24 @@ variable "aws_cis_git_repository_identifier" {
   default     = "benoitblais-hashicorp-demo/HCPTerraform-CIS-Policy-Set-for-AWS-Terraform"
 }
 
+variable "aws_fsbp_git_repository_identifier" {
+  description = "The VCS repository identifier for the FSBP Policy Set. `oauth_client_name` must also be set."
+  type        = string
+  default     = "benoitblais-hashicorp-demo/HCPTerraform-FSBP-Policy-Set-for-AWS-Terraform"
+}
+
+variable "aws_pcidss_git_repository_identifier" {
+  description = "The VCS repository identifier for the PCI DSS Policy Set. `oauth_client_name` must also be set."
+  type        = string
+  default     = "benoitblais-hashicorp-demo/HCPTerraform-PCIDSS-Policy-Set-for-AWS-Terraform"
+}
+
+variable "aws_nist_git_repository_identifier" {
+  description = "The VCS repository identifier for the NIST Policy Set. `oauth_client_name` must also be set."
+  type        = string
+  default     = "benoitblais-hashicorp-demo/HCPTerraform-NIST-Policy-Set-for-AWS-Terraform"
+}
+
 variable "oauth_client_name" {
   description = "(Optional) Name of the OAuth client."
   type        = string
