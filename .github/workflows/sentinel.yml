@@ -45,7 +45,7 @@ jobs:
 
       - name: 'Sentinel Format'
         id: fmt
-        uses: benoitblais-hashicorp-demo/GitHubAction-SentinelFormat@v1.0.0
+        uses: benoitblais-hashicorp-demo/GitHubAction-SentinelFormat@v1.0.1
         with:
           check: false
           delete_comment: false
